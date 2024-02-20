@@ -7,7 +7,7 @@
  *
  */
 
-void swap_sort(int *pv, int *nxt)
+void swap_sort(int pv, int nxt)
 {
 	int tmp;
 
