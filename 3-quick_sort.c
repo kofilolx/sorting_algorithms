@@ -3,15 +3,14 @@
 /**
  * swap_elements - Swaps two elements in an array.
  * @array: The array to modify.
- * @l: The index of the left elements.
- * @r: The index of the right elements.
- * 
+ * @left: The index of the left elements.
+ * @right: The index of the right elements.
  * size_t implemented (elements)
  */
 void swap_elements(int *array, size_t left, size_t right)
 {
 	int tmp;
-	
+
 	if (array != NULL)
 	{
 		tmp = array[left];
@@ -21,15 +20,13 @@ void swap_elements(int *array, size_t left, size_t right)
 }
 
 /**
- * sort-lomuto - Sorts a sub-array using the Quick sort algorithm
+ * sort_lomuto - Sorts a sub-array using the Quick sort algorithm
  * with Lomuto's partition scheme.
- *
  * This function sorts a sub-array of integers from 'low' to 'high'
  * within the given 'array' using the Quick Sort algorithm with Lomuto's
  * partition scheme. It rearranges the elements such that all elements
  * smaller than or equal to the pivot are placed before the pivot, and
- * all elements greater than the pivot are placed after the pivot.
- * 
+ * all elements greater than the pivot are placed after the pivot
  * @array: Pointer to the integer array.
  * @low: Starting index of the sub-array.
  * @high: Ending index of the sub-array.
@@ -40,7 +37,7 @@ void sort_lomuto(int *array, size_t low, size_t high, size_t size)
 {
 	int pivot;
 	size_t step, idx;
-	
+
 	if ((low >= high) || (array == NULL))
 		return;
 	pivot = array[high];
