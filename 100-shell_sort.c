@@ -3,18 +3,21 @@
 
 /**
  * shell_swap - swaps two elements.
+ * @array: array of elements
  * @a: 0th index
  * @b: ith index
  */
-void shell_swap(int *a, int *b)
+void shell_swap(int *array, int a, int b)
 {
 	int tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	if (array[a] != array[b])
+	{
+		tmp = array[a];
+		array[a] = array[b];
+		array[b] = tmp;
+	}
 }
-
 /**
  * shell_sort - sort the list and print the changes
  * @array: The array to sort.
@@ -25,23 +28,23 @@ void shell_sort(int *array, size_t size)
 {
 	size_t hld, idx, jmp;
 
+	hld = 0;
 	if (array == NULL || size < 2)
 		return;
 
-	for (hld = 1; hld < (size / 3);)
+	while (hld <= size / 3)
 		hld = hld * 3 + 1;
 
-	for (hld = 0; hld >= 1; hld /= 3)
+	while (hld >= 1)
 	{
 		for (idx = hld; idx < size; idx++)
 		{
-			jmp = idx;
-			while (jmp >= hld && array[jmp - hld] > array[jmp])
+			for (jmp = idx; jmp >= hld && array[jmp] < array[jmp - hld]; jmp -= hld)
 			{
-				shell_swap(array + jmp, array + (jmp - hld));
-				jmp -= hld;
+				shell_swap(array, jmp, jmp - hld);
 			}
 		}
+		hld /= 3;
 		print_array(array, size);
 	}
 }
